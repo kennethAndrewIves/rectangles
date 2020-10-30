@@ -11,16 +11,20 @@ from primaryFunctions.containment import rectangle_containment
 def check_rectangle(a, b, c, d, e, f, g, h):
     rect1 = Rectangle(a, b, c, d)
     rect2 = Rectangle(e, f, g, h)
+    if rect1.valid and rect2.valid:
+        intersections = rectangle_intersection(rect1, rect2)
+        if intersections:
+            for intersection in intersections:
+                print(intersection)
+        else:
+            print("no intersections")
 
-    intersections = rectangle_intersection(rect1, rect2)
-    if intersections:
-        for intersection in intersections:
-            print(intersection)
+        rect_adjacency = rectangle_adjacency(rect1, rect2)
+        print(rect_adjacency)
 
-    rect_adjacency = rectangle_adjacency(rect1, rect2)
-    print(rect_adjacency)
-
-    print(rectangle_containment(rect1, rect2))
+        print(rectangle_containment(rect1, rect2))
+    else:
+        print("invalid entry")
 
 
 if __name__ == "__main__":
