@@ -1,0 +1,37 @@
+
+python3 main.py 3 -1 -2.4 0.8 -1.5 3.5 3.9 1.7 5 5 0 0 5 0 0 5
+One rotated rectangle and one non-rotated rectangle. Intersect at (3.3, 0), (0, 3) and (0,0). No adjacency and not contained.
+
+python3 main.py 3.6 8.2 7.6 6.2 3.6 -1.8 -0.4 0.2 0 5 -1.2 2.6 1.6 4.2 0.4 1.8
+Two rotated rectangles. Primary sublinear adjacent, no intersections, not contained.
+
+python3 main.py 0 5 -1.2 2.6 1.6 4.2 0.4 1.8 3.6 8.2 7.6 6.2 3.6 -1.8 -0.4 0.2
+Two rotated rectangles. Primary sublinear adjacent, no intersections, not contained.
+
+python3 main.py 3.6 8.2 7.6 6.2 3.6 -1.8 -0.4 0.2 0 5 1.6 4.2 -6 -7 -4.4 -7.8
+Two rotated rectangles. partial adjacent, no intersections, not contained.
+
+python3 main.py 3.6 8.2 7.6 6.2 3.6 -1.8 -0.4 0.2 2 9 3.6 8.2 -2 1 -0.4 0.2
+Two rotated rectangles. fully adjacent, no intersections, not contained.
+
+python3 main.py 3.6 8.2 7.6 6.2 3.6 -1.8 -0.4 0.2 0.4 1.8 1.6 4.2 6 2 4.8 -0.4
+Two rotated rectangles. primary sublinear adjacent, intersect at (4.4, -0.2) and (5.6, 2.2), not contained.
+
+python3 main.py 0 5 5 0 -5 0 0 -5 0 2 -1.2 -1.6 0 -2 1.2 1.6
+Two rotated rectangles. No adjacency. No intersections. Containment.
+
+Known Limitations:
+If there is adjacency on more than one side, only the first valid adjacency type is returned. To solve this problem
+you would need to keep track of the lines and map adjacency type to two particular lines from each rectangle. Too much
+refactoring to accomplish tonight.
+
+When two rectangles are properly adjacent they will print intersections on the vertices of the properly adjacent side.
+I would usually ignore the non intersection of parallel lines, however in this unique case, the perpendicular lines
+intersect at those two vertices. Solution could be to always do an adjacency check before doing the intersection check
+and ignoring any intersections if the rectangles are properly adjacent.
+
+Oops:
+Definitely should have made a class for points instead of just using tuples for everything.
+
+Could have used floats instead of the Decimal class since I still have to round for precision. Especially since
+I had to use the math library for the containment function which required recasting back to floats.
